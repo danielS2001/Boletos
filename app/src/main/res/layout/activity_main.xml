@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agencia de Viajes\n''El Destino Feliz''\n"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtNumeroDeBoleto"
+            android:gravity="center"
+            android:hint="Numero de boleto"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/txtNombreDeCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Nombre del cliente" />
+
+        <EditText
+            android:id="@+id/txtEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Edad"
+            android:inputType="number"/>
+
+        <TextView
+            android:id="@+id/lblDestino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destino"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spnDestino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/lblTipoDeViaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Viaje"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/spnTipoDeViaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/txtFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Fecha"
+            android:inputType="date"/>
+
+        <EditText
+            android:id="@+id/txtPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Precio"
+            android:inputType="numberDecimal"/>
+
+        <Button
+            android:id="@+id/btnIntroducirDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Introducir datos" />
+
+        <Button
+            android:id="@+id/btnMostrarDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mostrar datos" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRegresar"
+            android:text="Regresar al menú principal"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/lblDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

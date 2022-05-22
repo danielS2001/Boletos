@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Agencia de viajes</string>
+    <string-array name="destinos">
+        <item>Mexicali</item>
+        <item>Tijuana</item>
+        <item>La Paz</item>
+        <item>Nuevo Vallarta</item>
+        <item>Mazatlán</item>
+        <item>Los Mochis</item>
+        <item>Guadalajara</item>
+        <item>Puerto Vallarta</item>
+        <item>Ciudad de México</item>
+        <item>Puebla</item>
+    </string-array>
+    <string name="desApp"> Destinos disponibles</string>
+    <string name="lblDestinos"> Seleccione un destino</string>
+
+    <string-array name="tiposDeViajes">
+        <item>1. Sencillo</item>
+        <item>2. Doble</item>
+    </string-array>
+</resources>
