@@ -1,7 +1,9 @@
 package com.example.boletos;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnIntroducirDatos;
     private Button btnMostrarDatos;
     private Button btnRegresar;
+    private Button btnCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnIntroducirDatos=(Button) findViewById(R.id.btnIntroducirDatos);
         btnMostrarDatos=(Button) findViewById(R.id.btnMostrarDatos);
         btnRegresar = (Button) findViewById(R.id.btnRegresar);
+        btnCerrar = (Button)  findViewById(R.id.btnCerrar);
 
         final String[] destino = {""};
         final int[] tipoDeViaje = {0};
@@ -60,26 +64,34 @@ public class MainActivity extends AppCompatActivity {
         btnIntroducirDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boletos.setNombreDeCliente(txtNombreDeCliente.getText().toString());
+                if (txtNombreDeCliente.getText().toString().matches("")
+                || txtNumeroDeBoleto.getText().toString().matches("")
+                || txtEdad.getText().toString().matches("")
+                || txtFecha.getText().toString().matches("")
+                ||txtPrecio.getText().toString().matches("")) {
+                    Toast.makeText(MainActivity.this,"Faltan datos",Toast.LENGTH_SHORT).show();
+                } else {
+                    boletos.setNombreDeCliente(txtNombreDeCliente.getText().toString());
 
-                String numeroDeBoleto = txtNumeroDeBoleto.getText().toString();
-                boletos.setNumeroDeBoleto(Integer.parseInt(numeroDeBoleto));
+                    String numeroDeBoleto = txtNumeroDeBoleto.getText().toString();
+                    boletos.setNumeroDeBoleto(Integer.parseInt(numeroDeBoleto));
 
-                String edad = txtEdad.getText().toString();
+                    String edad = txtEdad.getText().toString();
 
-                boletos.setDestino(destino[0]);
-                boletos.setTipoDeViaje(tipoDeViaje[0]);
-                boletos.setFecha(txtFecha.getText().toString());
-                String precio = txtPrecio.getText().toString();
-                boletos.setPrecio(Double.parseDouble(precio));
+                    boletos.setDestino(destino[0]);
+                    boletos.setTipoDeViaje(tipoDeViaje[0]);
+                    boletos.setFecha(txtFecha.getText().toString());
+                    String precio = txtPrecio.getText().toString();
+                    boletos.setPrecio(Double.parseDouble(precio));
 
-                //Funciones
-                subTotal[0] = boletos.calcularSubTotal();
-                descuento[0] = boletos.sacarDescuento(Integer.parseInt(edad));
-                impuesto[0] = boletos.sacarImpuesto();
-                total[0] = boletos.sacarTotal();
+                    //Funciones
+                    subTotal[0] = boletos.calcularSubTotal();
+                    descuento[0] = boletos.sacarDescuento(Integer.parseInt(edad));
+                    impuesto[0] = boletos.sacarImpuesto();
+                    total[0] = boletos.sacarTotal(descuento[0]);
 
-                Toast.makeText(MainActivity.this,"Datos ingresados",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Datos ingresados", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -169,6 +181,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }});
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder confirmar = new AlertDialog.Builder(MainActivity.this);
+                confirmar.setTitle("¿Cerrar APP?");
+                confirmar.setMessage("Se descartará toda la información ingresada");
+                confirmar.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                confirmar.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                confirmar.show();
+            }
+        });
 
         //txtNumeroDeBoleto.setText("1");
     }

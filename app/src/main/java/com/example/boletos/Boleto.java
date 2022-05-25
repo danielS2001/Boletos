@@ -9,11 +9,6 @@ public class Boleto {
     private String fecha;
     private double precio;
 
-    private double impuesto;
-    private double descuento;
-    private double subTotal;
-    private double total;
-
     //Constructores
     public Boleto() { //Constructor vacío.
         this.numeroDeBoleto = 0;
@@ -129,26 +124,31 @@ public class Boleto {
 
 
     public double calcularSubTotal() {
+        double subTotal = 0;
         if(this.tipoDeViaje==1) subTotal = this.precio;
         if(this.tipoDeViaje==2) subTotal = this.precio*1.8;
         return subTotal;
     }
 
     public double sacarDescuento(int edad) {
+        double descuento = 0;
         if (edad >= 60) {
-            descuento = (subTotal) /2;
+            descuento = (calcularSubTotal()) /2;
         }
         return descuento;
     }
 
     public double sacarImpuesto() {
+        double subTotal = calcularSubTotal();
+        double impuesto;
         impuesto = subTotal *.16;
         subTotal = subTotal + impuesto;
         return impuesto;
     }
 
-    public double sacarTotal() {
-        total = subTotal - descuento;
+    public double sacarTotal(double descuento) {
+        double total;
+        total = calcularSubTotal() - descuento;
         return total;
     }
 }
